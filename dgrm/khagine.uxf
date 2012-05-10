@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="11.3">
+  <help_text>// This file contains khgine 0.0.3
+// diagram.</help_text>
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>60</x>
+      <y>60</y>
+      <w>280</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>EventQueue
+--
+- evt_queue : priority_queue&lt;Event*&gt;
+--
++ push_event(evt : Event*) : void
++ pop_event() : Event*
++ is_empty() : bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>70</x>
+      <y>200</y>
+      <w>210</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>Clock
+--
+- time : int
+--
++ get_time() : int
++ set_time(val : int) : void
++ increase() : int
++ decrease() : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>400</x>
+      <y>10</y>
+      <w>290</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>Event
+--
+- time : int
+- id : int
+- owner : Entity*
+- method_index : int
+--
++ get_time() : int
++ set_time(val : int) : void
++ get_id() : int
++ get_owner() : Entity*
++ set_owner(m_owner : Entity*) : void
++ get_method_index() : int
++ set_method_index(m_mi : int) : void
++ operate() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>70</x>
+      <y>630</y>
+      <w>420</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>Entity
+--
+- relatives : vector&lt;string&gt;
+- methods : vector&lt;void(*)(owner: Entity*)&gt;
+- event_queue : EventQueue*
+- clock : Clock*
+- main_entities : EntityMap*
+- id : int
+--
++ connect(m_name : string) : void
++ disconnect(m_name : string) : void
++ is_connected(m_name : string) : bool
++ add_method(func : void(*)(owner: Entity*)) : int
++ get_method(index : int) : void(*)(Entity*)
++ get_event_queue() : EventQueue*
++ set_event_queue(evt_queue : EventQueue*) : void
++ get_clock() : Clock*
++ set_clock(m_clock : Clock*) : void
++ get_entity(name : string) : Entity*
++ get_id() : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>550</x>
+      <y>320</y>
+      <w>340</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Khagine
+--
+- entities : map&lt;string, Entity*&gt;
+- event_queue : EventQueue*
+- clock : Clock*
+--
++ init(argc : int, argv : char**) : void
++ step() : void
++ push_event(evt : Event*) : void
++ add_entity(name : string, ent : Entity*) : void
++ delete_entity(std::name) : void
++ get_time() : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>310</x>
+      <y>90</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;30;90;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>180</x>
+      <y>140</y>
+      <w>390</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>370;240;160;240;160;50;30;50;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>250</x>
+      <y>230</y>
+      <w>320</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>300;170;40;170;40;30;30;30</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>260</x>
+      <y>480</y>
+      <w>400</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>380;30;380;120;30;120;30;150</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>210</x>
+      <y>220</y>
+      <w>290</w>
+      <h>430</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>270;30;270;220;30;220;30;410</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1140</x>
+      <y>180</y>
+      <w>210</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Distribution
+--
+--
+/+ generate() : double/
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>920</x>
+      <y>340</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>ExponentialDistribution
+--
+- lambda : double
+--
++ generate() : double
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1140</x>
+      <y>340</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>NormalDistribution
+--
+- mean : double
+- variance : double 
+--
++ generate() : double
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>1360</x>
+      <y>340</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>GammaDistribution
+--
+--
++ generate() : double
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1000</x>
+      <y>200</y>
+      <w>260</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>240;30;240;100;30;100;30;140</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1210</x>
+      <y>200</y>
+      <w>50</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>30;30;30;100;30;140</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>1210</x>
+      <y>200</y>
+      <w>280</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>30;30;30;100;260;100;260;140</additional_attributes>
+  </element>
+</diagram>
