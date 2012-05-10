@@ -23,6 +23,12 @@ gz: ./src/ ./dgrm/ ./include/ ./Makefile ./test/
 	tar -cf $(PROJECT_NAME)-$(VERSION).tar ../v$(VERSION)
 	gzip $(PROJECT_NAME)-$(VERSION).tar
 
+install:
+	make install -C $(TOPDIR)/src
+
+uninstall:
+	make uninstall -C $(TOPDIR)/src
+
 clean:
 	make clean -C $(TOPDIR)/src
 	make clean -C $(TOPDIR)/test
