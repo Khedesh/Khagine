@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if test -f configure.ac; then
+configure_ac=configure.ac
+else
+configure_ac=configure.in
+fi
+
+case $1 in
+--run)
+	shift
+	"$@" && exit 0
+	;;
+	esac

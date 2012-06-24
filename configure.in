@@ -1,0 +1,41 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+AC_PREREQ([2.67])
+AC_INIT([Khagine], [0.0.3], [khedesh@users.sf.net])
+AC_CONFIG_HEADERS([include/config.h])
+AM_INIT_AUTOMAKE
+
+# Checks for programs.
+AC_PROG_CXX
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_PROG_MAKE_SET
+AC_PROG_RANLIB
+
+# Checks for libraries.
+AC_CHECK_LIB([m], [main])
+AC_CHECK_LIB([pthread], [main])
+
+# Checks for header files.
+AC_CHECK_HEADERS([stdlib.h time.h math.h])
+
+# Setting Directories
+
+# Adding include dirs
+CFLAGS="$CFLAGS -pipe -Wall -I$INCLUDE_DIR"
+
+# target properties
+TARGET_NAME="$BUILD_DIR/libKhagine.a"
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_HEADER_STDBOOL
+AC_C_CONST
+
+# Checks for library functions.
+AC_CHECK_FUNCS([pow log time rand srand])
+
+AC_CONFIG_FILES([Makefile
+                 src/Makefile
+                 test/SingleServerQueue/Makefile])
+AC_OUTPUT
